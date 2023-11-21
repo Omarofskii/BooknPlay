@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">project</string>
+    <string name="emailText">Email</string>
+    <string name="wachtwoordText">wachtwoord</string>
 </resources>
