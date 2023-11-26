@@ -9,5 +9,6 @@ data class User(
     val matches: Int = 0,
     val sport: String = "",
     val level: Int = 0,
-    val bestHand: String = ""
+    val bestHand: String = "",
+    val profileImageUrl: String? = null
 )

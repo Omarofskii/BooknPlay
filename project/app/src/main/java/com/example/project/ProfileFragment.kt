@@ -90,19 +90,38 @@ class ProfileFragment : Fragment() {
     }
 
     private fun uploadImageToFirebase(imageUri: Uri) {
-        // Get an instance of FirebaseStorage
-        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/${FirebaseAuth.getInstance().currentUser?.uid}")
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$uid")
 
-        // Upload the image to Firebase Storage
-        storageReference.putFile(imageUri).addOnSuccessListener {
-            // Get the download URL and update the user's profile image
-            storageReference.downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(this).load(uri).into(profileImageView)
+        storageReference.putFile(imageUri)
+            .addOnSuccessListener {
+                // Image uploaded successfully
+                storageReference.downloadUrl.addOnSuccessListener { uri ->
+                    // Get the download URL
+                    val photoUrl = uri.toString()
+                    // Update Firestore with the new URL
+                    saveImageUrlToFirestore(photoUrl, uid)
+                    // Update the ImageView with the new image
+                    Glide.with(this@ProfileFragment)
+                        .load(photoUrl)
+                        .into(profileImageView)
+                }
             }
-        }.addOnFailureListener {
-            // Handle unsuccessful uploads
-            Log.e("ProfileFragment", "Image upload failed", it)
-        }
+            .addOnFailureListener {
+                // Handle unsuccessful uploads
+                Log.e("ProfileFragment", "Image upload failed", it)
+            }
+    }
+
+    private fun saveImageUrlToFirestore(imageUrl: String, userId: String) {
+        val userRef = FirebaseFirestore.getInstance().collection("users").document(userId)
+        userRef.update("profileImageUrl", imageUrl)
+            .addOnSuccessListener {
+                Log.d("ProfileFragment", "Image URL saved to Firestore.")
+            }
+            .addOnFailureListener {
+                Log.e("ProfileFragment", "Failed to save image URL to Firestore.", it)
+            }
     }
 
     companion object {
@@ -133,6 +152,12 @@ class ProfileFragment : Fragment() {
         profileSportTextView.text = user.sport
         profileLevelTextView.text = user.level.toString()
         profileBestHandTextView.text = user.bestHand
+
+        if (!user.profileImageUrl.isNullOrEmpty()) {
+            Glide.with(this@ProfileFragment)
+                .load(user.profileImageUrl)
+                .into(profileImageView)
+        }
 
     }
 
