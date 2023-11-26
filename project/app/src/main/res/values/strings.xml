@@ -2,6 +2,11 @@
     <string name="app_name">BooknPlay</string>
     <string name="emailText">Email</string>
     <string name="wachtwoordText">wachtwoord</string>
+    <string name="loginText">Login</string>
+    <string name="e_mail">E-mail</string>
+    <string name="SignupTextView">Heb je al account Log hier u in</string>
+    <string name="SignInTextView">Ik heb nog geen account maak hier een</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
