@@ -1,16 +1,26 @@
 package com.example.project
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.example.project.User
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.firestore.toObject
+import com.google.firebase.storage.FirebaseStorage
+import com.bumptech.glide.Glide
 
 
 class ProfileFragment : Fragment() {
@@ -22,6 +32,18 @@ class ProfileFragment : Fragment() {
     private lateinit var profileSportTextView: TextView
     private lateinit var profileLevelTextView: TextView
     private lateinit var profileBestHandTextView: TextView
+
+    private lateinit var buttonEditPicture: Button
+    private lateinit var profileImageView: ShapeableImageView
+
+    private val pickImageResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val imageUri = result.data?.data
+            imageUri?.let {
+                uploadImageToFirebase(it)
+            }
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,9 +60,53 @@ class ProfileFragment : Fragment() {
         profileLevelTextView = view.findViewById(R.id.profileLevelTextView)
         profileBestHandTextView = view.findViewById(R.id.profileBestHandTextView)
 
+        buttonEditPicture = view.findViewById(R.id.button_edit_picture)
+        profileImageView = view.findViewById(R.id.profileImageView)
+
+        buttonEditPicture.setOnClickListener {
+            chooseImage()
+        }
+
         loadUserProfile()
 
         return view
+    }
+    private fun chooseImage() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        pickImageResultLauncher.launch(intent)
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            STORAGE_PERMISSION_CODE -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    chooseImage()
+                } else {
+                    Toast.makeText(context, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
+    }
+
+    private fun uploadImageToFirebase(imageUri: Uri) {
+        // Get an instance of FirebaseStorage
+        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/${FirebaseAuth.getInstance().currentUser?.uid}")
+
+        // Upload the image to Firebase Storage
+        storageReference.putFile(imageUri).addOnSuccessListener {
+            // Get the download URL and update the user's profile image
+            storageReference.downloadUrl.addOnSuccessListener { uri ->
+                Glide.with(this).load(uri).into(profileImageView)
+            }
+        }.addOnFailureListener {
+            // Handle unsuccessful uploads
+            Log.e("ProfileFragment", "Image upload failed", it)
+        }
+    }
+
+    companion object {
+        private const val STORAGE_PERMISSION_CODE = 1000
     }
 
     private fun loadUserProfile() {

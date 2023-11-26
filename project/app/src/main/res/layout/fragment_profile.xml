@@ -67,6 +67,14 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <Button
+                android:id="@+id/button_edit_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Picture"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp" />
+
 
             <!-- Player Preferences Section -->
             <TextView
