@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
@@ -16,71 +17,86 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <ImageView
+            <!-- Profile Image Section -->
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profileImageView"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
-                android:src="@drawable/profile" /> <!-- Replace with your drawable resource -->
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile_pic"
+                app:shapeAppearanceOverlay="@style/CircularImageView"/>
 
+
+            <!-- User's Name -->
             <TextView
-                android:id="@+id/profileNameTextView"
+                android:id="@+id/profileFirstNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:text="Omar Rahman"
+                android:text="First Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <TextView
+                android:id="@+id/profileLastNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="Last Name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+            <!-- User's Location -->
             <TextView
                 android:id="@+id/profileLocationTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Plays in Brasschaat, Belgium"
+                android:text="Location Placeholder"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Matches Section -->
+            <TextView
+                android:id="@+id/matchesTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Matches Placeholder"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="44\nMatches"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <!-- Player Preferences Section -->
+            <TextView
+                android:id="@+id/profileBestHandTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Best Hand Placeholder"
+                android:layout_marginTop="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-            </LinearLayout>
+            <!-- Level Progression Section -->
+            <TextView
+                android:id="@+id/profileLevelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level Placeholder"
+                android:layout_marginTop="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <!-- Activities Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/profileSportTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Activities"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <!-- Replace these with dynamic content based on user's activities -->
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Padel" />
+                android:text="Sport Placeholder"
+                android:layout_marginTop="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
-            </LinearLayout>
 
-            <!-- Add other sections as needed -->
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -1,59 +1,73 @@
 package com.example.project
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.example.project.User
+import com.google.firebase.firestore.toObject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var profileFirstNameTextView: TextView
+    private lateinit var profileLastNameTextView: TextView
+    private lateinit var profileLocationTextView: TextView
+    private lateinit var profileMatchesTextView: TextView
+    private lateinit var profileSportTextView: TextView
+    private lateinit var profileLevelTextView: TextView
+    private lateinit var profileBestHandTextView: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        // Initialize views
+        profileFirstNameTextView = view.findViewById(R.id.profileFirstNameTextView)
+        profileLastNameTextView = view.findViewById(R.id.profileLastNameTextView)
+        profileLocationTextView = view.findViewById(R.id.profileLocationTextView)
+        profileMatchesTextView = view.findViewById(R.id.matchesTextView)
+        profileSportTextView = view.findViewById(R.id.profileSportTextView)
+        profileLevelTextView = view.findViewById(R.id.profileLevelTextView)
+        profileBestHandTextView = view.findViewById(R.id.profileBestHandTextView)
+
+        loadUserProfile()
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun loadUserProfile() {
+        val db = FirebaseFirestore.getInstance()
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return // Return if UID is null
+
+        db.collection("users").document(uid).get()
+            .addOnSuccessListener { documentSnapshot ->
+                val user = documentSnapshot.toObject<User>()
+                user?.let { updateUserProfileViews(it) }
+            }
+            .addOnFailureListener { e ->
+                Log.w("ProfileFragment", "Error loading user profile", e)
             }
     }
+
+    private fun updateUserProfileViews(user: User) {
+        // Populate user data into views
+        profileFirstNameTextView.text = user.firstName
+        profileLastNameTextView.text = user.lastName
+        val location = "${user.district}, ${user.country}"
+        profileLocationTextView.text = location
+        profileMatchesTextView.text = user.matches.toString()
+        profileSportTextView.text = user.sport
+        profileLevelTextView.text = user.level.toString()
+        profileBestHandTextView.text = user.bestHand
+
+    }
+
 }
