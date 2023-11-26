@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
+    </style>
+
+    <!-- Style for active bottom navigation item -->
+    <style name="BottomNavigationView_Active" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/bottom_nav_active</item>
+    </style>
+
+    <!-- Style for inactive bottom navigation item -->
+    <style name="BottomNavigationView_Inactive" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/bottom_nav_inactive</item>
+    </style>
+</resources>
