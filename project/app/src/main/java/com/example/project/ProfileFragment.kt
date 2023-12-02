@@ -154,7 +154,7 @@ class ProfileFragment : Fragment() {
         // Populate user data into views
         profileFirstNameTextView.text = user.firstName
         profileLastNameTextView.text = user.lastName
-        val location = "${user.district}, ${user.country}"
+        val location = "Plays in ${user.district}, ${user.country}"
         profileLocationTextView.text = location
         profileBestHandTextView.text = user.bestHand
 

@@ -3,6 +3,7 @@ package com.example.project
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Spinner
 import android.widget.Toast
 import com.example.project.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -33,7 +34,8 @@ class SignUpActivity : AppCompatActivity() {
             val lastName = binding.editTextLastName.text.toString().trim()
             val district = binding.editTextDistrict.text.toString().trim()
             val country = binding.editTextCountry.text.toString().trim()
-            val bestHand = binding.editTextBestHand.text.toString().trim()
+            val bestHandSpinner: Spinner = findViewById(R.id.editTextBestHand)
+            val bestHand = bestHandSpinner.selectedItem.toString()
 
 
             if (email.isNotEmpty() && pass.isNotEmpty()) {

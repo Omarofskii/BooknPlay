@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
+        <item name="colorPrimaryDark">@color/greenish_button</item>
     </style>
 
     <!-- Style for active bottom navigation item -->
@@ -22,4 +23,6 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
+
 </resources>

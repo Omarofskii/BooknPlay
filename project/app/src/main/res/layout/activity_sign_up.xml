@@ -80,48 +80,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Matches Field -->
-        <EditText
-            android:id="@+id/editTextMatches"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="@string/matches"
-            android:inputType="number"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCountry"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <!-- Sport Field -->
-        <EditText
-            android:id="@+id/editTextSport"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="@string/sport"
-            app:layout_constraintTop_toBottomOf="@+id/editTextMatches"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <!-- Level Field -->
-        <EditText
-            android:id="@+id/editTextLevel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="@string/level"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSport"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Best Hand Field -->
-        <EditText
+        <!-- Best Hand Dropdown -->
+        <Spinner
             android:id="@+id/editTextBestHand"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="@string/best_hand"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLevel"
+            android:entries="@array/best_hand_options"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCountry"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -132,6 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/signUp"
+            android:backgroundTint="@color/greenish_button"
             app:layout_constraintTop_toBottomOf="@+id/editTextBestHand"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

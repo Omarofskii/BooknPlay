@@ -21,4 +21,9 @@
 
     <string name="play">Play</string>
     <string name="profile">Profile</string>
+
+    <string-array name="best_hand_options">
+        <item>Right Hand</item>
+        <item>Left Hand</item>
+    </string-array>
 </resources>

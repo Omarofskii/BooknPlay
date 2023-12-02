@@ -1,5 +1,6 @@
 package com.example.project
 
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -10,6 +11,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (getSupportActionBar() != null) {
+            supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.greenish_button)))
+
+        }
 
         val bottomNavView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
 

@@ -14,97 +14,91 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="horizontal"
+            android:padding="15dp">
 
             <!-- Profile Image Section -->
+
+            <!-- Profile Info Section -->
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profileImageView"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="32dp"
-                android:padding="4dp"
-                android:scaleType="centerCrop"
+                android:layout_width="127dp"
+                android:layout_height="127dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/profile_pic"
-                app:shapeAppearanceOverlay="@style/CircularImageView"/>
+                app:shapeAppearanceOverlay="@style/CircularImageView" />
+
+            <LinearLayout
+                android:layout_width="251dp"
+                android:layout_height="207dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <!-- User's Name -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/profileFirstNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="First Name"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/profileLastNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last Name"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/profileLocationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0px"
+                    android:text="Location Placeholder"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/black" />
 
 
-            <!-- User's Name -->
-            <TextView
-                android:id="@+id/profileFirstNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="First Name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-            <TextView
-                android:id="@+id/profileLastNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="Last Name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <!-- User's Location -->
-            <TextView
-                android:id="@+id/profileLocationTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Location Placeholder"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <!-- Matches Section -->
-            <TextView
-                android:id="@+id/matchesTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Matches Placeholder"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-            <Button
-                android:id="@+id/button_edit_picture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit Picture"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp" />
+                <Button
+                    android:id="@+id/button_edit_picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/greenish_button"
+                    android:text="Edit Picture" />
 
 
-            <!-- Player Preferences Section -->
-            <TextView
-                android:id="@+id/profileBestHandTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Best Hand Placeholder"
-                android:layout_marginTop="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <TextView
+                    android:id="@+id/profileBestHandTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Best Hand Placeholder"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/black" />
 
-            <!-- Level Progression Section -->
-            <TextView
-                android:id="@+id/profileLevelTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Level Placeholder"
-                android:layout_marginTop="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-            <!-- Activities Section -->
-            <TextView
-                android:id="@+id/profileSportTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sport Placeholder"
-                android:layout_marginTop="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-
+                <TextView
+                    android:id="@+id/profileSportTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Padel"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/black" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
+
