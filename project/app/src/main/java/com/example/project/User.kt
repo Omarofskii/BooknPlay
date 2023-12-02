@@ -6,9 +6,6 @@ data class User(
     val lastName: String = "",
     val district: String = "",
     val country: String = "",
-    val matches: Int = 0,
-    val sport: String = "",
-    val level: Int = 0,
     val bestHand: String = "",
     val profileImageUrl: String? = null
 )

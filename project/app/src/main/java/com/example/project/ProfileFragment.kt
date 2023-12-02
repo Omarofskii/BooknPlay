@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -28,9 +31,6 @@ class ProfileFragment : Fragment() {
     private lateinit var profileFirstNameTextView: TextView
     private lateinit var profileLastNameTextView: TextView
     private lateinit var profileLocationTextView: TextView
-    private lateinit var profileMatchesTextView: TextView
-    private lateinit var profileSportTextView: TextView
-    private lateinit var profileLevelTextView: TextView
     private lateinit var profileBestHandTextView: TextView
 
     private lateinit var buttonEditPicture: Button
@@ -44,6 +44,17 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.profile_menu, menu)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,9 +66,6 @@ class ProfileFragment : Fragment() {
         profileFirstNameTextView = view.findViewById(R.id.profileFirstNameTextView)
         profileLastNameTextView = view.findViewById(R.id.profileLastNameTextView)
         profileLocationTextView = view.findViewById(R.id.profileLocationTextView)
-        profileMatchesTextView = view.findViewById(R.id.matchesTextView)
-        profileSportTextView = view.findViewById(R.id.profileSportTextView)
-        profileLevelTextView = view.findViewById(R.id.profileLevelTextView)
         profileBestHandTextView = view.findViewById(R.id.profileBestHandTextView)
 
         buttonEditPicture = view.findViewById(R.id.button_edit_picture)
@@ -148,9 +156,6 @@ class ProfileFragment : Fragment() {
         profileLastNameTextView.text = user.lastName
         val location = "${user.district}, ${user.country}"
         profileLocationTextView.text = location
-        profileMatchesTextView.text = user.matches.toString()
-        profileSportTextView.text = user.sport
-        profileLevelTextView.text = user.level.toString()
         profileBestHandTextView.text = user.bestHand
 
         if (!user.profileImageUrl.isNullOrEmpty()) {
@@ -160,5 +165,34 @@ class ProfileFragment : Fragment() {
         }
 
     }
+
+    private fun clearUserProfile() {
+        // Clear all the views
+        profileFirstNameTextView.text = ""
+        profileLastNameTextView.text = ""
+        profileLocationTextView.text = ""
+        profileBestHandTextView.text = ""
+        profileImageView.setImageResource(R.drawable.ic_profile) // Set a default or placeholder image
+    }
+
+    private fun logoutUser() {
+        FirebaseAuth.getInstance().signOut()
+        clearUserProfile()
+        val intent = Intent(activity, SignInActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                logoutUser()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
 
 }

@@ -33,9 +33,6 @@ class SignUpActivity : AppCompatActivity() {
             val lastName = binding.editTextLastName.text.toString().trim()
             val district = binding.editTextDistrict.text.toString().trim()
             val country = binding.editTextCountry.text.toString().trim()
-            val matches = binding.editTextMatches.text.toString().toIntOrNull() ?: 0
-            val sport = binding.editTextSport.text.toString().trim()
-            val level = binding.editTextLevel.text.toString().toIntOrNull() ?: 0
             val bestHand = binding.editTextBestHand.text.toString().trim()
 
 
@@ -43,7 +40,7 @@ class SignUpActivity : AppCompatActivity() {
                 firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isComplete) {
 
-                        val newUser = User(email, firstName, lastName, district, country, matches, sport, level, bestHand)
+                        val newUser = User(email, firstName, lastName, district, country, bestHand)
 
                         val firestoreDb = FirebaseFirestore.getInstance()
 
