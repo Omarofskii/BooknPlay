@@ -11,33 +11,40 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySigninBinding
     private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         firebaseAuth = FirebaseAuth.getInstance()
-        binding.textView2.setOnClickListener(){
+
+        // Navigate to SignUpActivity when the user clicks on the sign-up prompt
+        binding.textView2.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
 
-        binding.button.setOnClickListener(){
+        // Attempt to sign in the user when the sign-in button is clicked
+        binding.button.setOnClickListener {
             val email = binding.editTextTextEmailAddress.text.toString()
-            val pass = binding.editTextTextPassword.text.toString()
+            val password = binding.editTextTextPassword.text.toString()
 
-            if (email.isNotEmpty() && pass.isNotEmpty()) {
-                firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                    if (it.isComplete) {
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                // Sign in the user
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Sign-in success, navigate to MainActivity
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        finish() // Finish this activity so the user can't navigate back to it
                     } else {
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        // If sign-in fails, display a message to the user
+                        Toast.makeText(this, task.exception?.message ?: "Authentication failed.", Toast.LENGTH_SHORT).show()
                     }
                 }
-            }else{
-                Toast.makeText(this, "invoer velden mogen niet leeg zijn", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Email and password fields must not be empty.", Toast.LENGTH_SHORT).show()
             }
         }
     }
