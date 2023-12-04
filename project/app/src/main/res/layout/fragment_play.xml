@@ -9,22 +9,83 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:paddingTop="250dp">
+        android:orientation="vertical"
+        android:paddingTop="150dp"
+        android:layout_margin="5dp">
 
-        <ImageView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/playMatch"
-            android:layout_width="0dp"
-            android:layout_height="127dp"
-            android:layout_weight="1"
-            android:src="@drawable/_631171849903" />
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardCornerRadius="20dp"
+            android:clickable="true"
+            android:layout_margin="10dp"
+            app:cardElevation="5dp"
 
-        <ImageView
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:maxHeight="100dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/_631171849903" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/play_a_match"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/bookCourt"
-            android:layout_width="0dp"
-            android:layout_height="127dp"
-            android:layout_weight="1"
-            android:src="@drawable/__padel_courts_tablet" />
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardCornerRadius="20dp"
+            android:clickable="true"
+
+            android:layout_margin="10dp"
+            app:cardElevation="5dp"
+
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/IMAGE2"
+                android:layout_width="match_parent"
+                android:layout_height="127dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/__padel_courts_tablet" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/book_a_court"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
     </LinearLayout>
 </FrameLayout>

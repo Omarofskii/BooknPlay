@@ -2,6 +2,7 @@ package com.example.project
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,32 +25,43 @@ class PlayFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FragmentPlayBinding.inflate(layoutInflater)
+
 
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
 
-        binding.bookCourt.setOnClickListener(){
-            val intent = Intent(activity, BookCourtActivity::class.java)
-            startActivity(intent)
-        }
 
-        binding.playMatch.setOnClickListener(){
-            val intent = Intent(activity, PlayMatchActivity::class.java)
-            startActivity(intent)
-        }
+
+
+
 
 
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_play, container, false)
+        binding = FragmentPlayBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.playMatch.setOnClickListener{
+            Log.d("PlayFragment", "Play Match card clicked")
+            val intent = Intent(requireActivity(), PlayMatchActivity::class.java)
+            startActivity(intent)
+        }
+        binding.bookCourt.setOnClickListener{
+            val intent = Intent(requireActivity(), BookCourtActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {

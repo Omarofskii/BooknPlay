@@ -21,6 +21,8 @@
 
     <string name="play">Play</string>
     <string name="profile">Profile</string>
+    <string name="play_a_match">Play a Match</string>
+    <string name="book_a_court">Book a Court</string>
 
     <string-array name="best_hand_options">
         <item>Right Hand</item>
