@@ -16,7 +16,7 @@
     <string name="SignupTextView">Already have an account?</string>
     <string name="SignInTextView">I dont have an account</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="play">Play</string>
@@ -28,4 +28,26 @@
         <item>Right Hand</item>
         <item>Left Hand</item>
     </string-array>
+
+    <!-- Strings used in the court item layout -->
+    <string name="court_image">Court Image</string>
+    <string name="court_name">Court Name</string>
+    <string name="book">Book Now</string>
+
+    <!-- Strings for the CourtsActivity -->
+    <string name="title_activity_courts">Choose a Court</string>
+
+    <!-- Error messages -->
+    <string name="error_fetching_courts">Error fetching courts</string>
+    <string name="error_loading_image">Error loading image</string>
+
+    <!-- Other strings -->
+    <string name="booking_confirmation">Booking Confirmation</string>
+    <string name="choose_time_slot">Choose a Time Slot</string>
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="booking_success">Booking successful!</string>
+    <string name="booking_failure">Booking failed, please try again.</string>
+
+
+
 </resources>
