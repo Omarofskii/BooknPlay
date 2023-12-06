@@ -1,8 +1,7 @@
 package com.example.project
 
-class Court (
-    val id: String,
-    val name: String,
-    val imageUrl: String,
-    val availableTimes: List<String>
+data class Court(
+    val name: String = "",
+    val availableTimes: List<String> = emptyList(),
+    val imageUrl: String = ""
 )

@@ -32,6 +32,7 @@
     <!-- Strings used in the court item layout -->
     <string name="court_image">Court Image</string>
     <string name="court_name">Court Name</string>
+    <string name="available_times">Avalaible Times</string>
     <string name="book">Book Now</string>
 
     <!-- Strings for the CourtsActivity -->
