@@ -47,7 +47,7 @@
     <string name="confirm_booking">Confirm Booking</string>
     <string name="booking_success">Booking successful!</string>
     <string name="booking_failure">Booking failed, please try again.</string>
-
+    <string name="title_activity_court_adapter">CourtAdapter</string>
 
 
 </resources>
