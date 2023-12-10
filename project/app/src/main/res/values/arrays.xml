@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="favorite_play_time_options">
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+        <item>19:00</item>
+        <item>20:00</item>
+    </string-array>
+
+    <string-array name="favorite_court_position_options">
+        <item>Front Left Side</item>
+        <item>Front Right Side</item>
+        <item>Back Left Side</item>
+        <item>Back Right Side</item>
+    </string-array>
+</resources>

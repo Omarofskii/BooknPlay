@@ -32,6 +32,8 @@ class ProfileFragment : Fragment() {
     private lateinit var profileLastNameTextView: TextView
     private lateinit var profileLocationTextView: TextView
     private lateinit var profileBestHandTextView: TextView
+    private lateinit var profileFavoritePlayTimeTextView: TextView
+    private lateinit var profileFavoriteCourtPositionTextView: TextView
 
     private lateinit var buttonEditPicture: Button
     private lateinit var profileImageView: ShapeableImageView
@@ -67,6 +69,8 @@ class ProfileFragment : Fragment() {
         profileLastNameTextView = view.findViewById(R.id.profileLastNameTextView)
         profileLocationTextView = view.findViewById(R.id.profileLocationTextView)
         profileBestHandTextView = view.findViewById(R.id.profileBestHandTextView)
+        profileFavoritePlayTimeTextView = view.findViewById(R.id.profileFavoritePlayTimeTextView)
+        profileFavoriteCourtPositionTextView = view.findViewById(R.id.profileFavoriteCourtPositionTextView)
 
         buttonEditPicture = view.findViewById(R.id.button_edit_picture)
         profileImageView = view.findViewById(R.id.profileImageView)
@@ -156,7 +160,9 @@ class ProfileFragment : Fragment() {
         profileLastNameTextView.text = user.lastName
         val location = "Plays in ${user.district}, ${user.country}"
         profileLocationTextView.text = location
-        profileBestHandTextView.text = user.bestHand
+        profileBestHandTextView.text = "Best Hand: ${user.bestHand}"
+        profileFavoritePlayTimeTextView.text = "Favorite Play Time: ${user.favoritePlayTime}"
+        profileFavoriteCourtPositionTextView.text = "Favorite Court Position: ${user.favoriteCourtPosition}"
 
         if (!user.profileImageUrl.isNullOrEmpty()) {
             Glide.with(this@ProfileFragment)

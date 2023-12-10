@@ -36,13 +36,17 @@ class SignUpActivity : AppCompatActivity() {
             val country = binding.editTextCountry.text.toString().trim()
             val bestHandSpinner: Spinner = findViewById(R.id.editTextBestHand)
             val bestHand = bestHandSpinner.selectedItem.toString()
+            val favoritePlayTimeSpinner: Spinner = findViewById(R.id.spinnerFavoritePlayTime)
+            val favoritePlayTime = favoritePlayTimeSpinner.selectedItem.toString()
+            val favoriteCourtPositionSpinner: Spinner = findViewById(R.id.spinnerFavoriteCourtPosition)
+            val favoriteCourtPosition = favoriteCourtPositionSpinner.selectedItem.toString()
 
 
             if (email.isNotEmpty() && pass.isNotEmpty()) {
                 firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isComplete) {
 
-                        val newUser = User(email, firstName, lastName, district, country, bestHand)
+                        val newUser = User(email, firstName, lastName, district, country, bestHand, favoritePlayTime, favoriteCourtPosition)
 
                         val firestoreDb = FirebaseFirestore.getInstance()
 

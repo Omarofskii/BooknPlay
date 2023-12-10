@@ -83,29 +83,87 @@
 
         <!-- Best Hand Field -->
         <!-- Best Hand Dropdown -->
+
+        <!-- Favorite Play Time Dropdown -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:text="Best Hand"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCountry" />
+
         <Spinner
             android:id="@+id/editTextBestHand"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="48dp"
             android:entries="@array/best_hand_options"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCountry"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/editTextCountry" />
+
+        <!-- Favorite Court Position Dropdown -->
 
         <!-- Sign Up Button -->
+
+        <!-- Already have an account? Text -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:text="Favorite Play Time"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/editTextBestHand" />
+
+        <Spinner
+            android:id="@+id/spinnerFavoritePlayTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:entries="@array/favorite_play_time_options"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextBestHand" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:text="Favorite Court Position"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerFavoritePlayTime" />
+
+        <Spinner
+            android:id="@+id/spinnerFavoriteCourtPosition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:entries="@array/favorite_court_position_options"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerFavoritePlayTime" />
+
         <Button
             android:id="@+id/SignUpbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/signUp"
+            android:layout_marginTop="160dp"
             android:backgroundTint="@color/greenish_button"
-            app:layout_constraintTop_toBottomOf="@+id/editTextBestHand"
+            android:text="@string/signUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/editTextBestHand" />
 
-        <!-- Already have an account? Text -->
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"

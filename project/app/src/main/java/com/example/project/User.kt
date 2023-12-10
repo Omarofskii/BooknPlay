@@ -7,5 +7,7 @@ data class User(
     val district: String = "",
     val country: String = "",
     val bestHand: String = "",
+    val favoritePlayTime: String = "",
+    val favoriteCourtPosition: String = "",
     val profileImageUrl: String? = null
 )
