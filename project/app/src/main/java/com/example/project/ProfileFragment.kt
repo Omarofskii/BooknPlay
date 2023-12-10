@@ -160,9 +160,9 @@ class ProfileFragment : Fragment() {
         profileLastNameTextView.text = user.lastName
         val location = "Plays in ${user.district}, ${user.country}"
         profileLocationTextView.text = location
-        profileBestHandTextView.text = "Best Hand: ${user.bestHand}"
-        profileFavoritePlayTimeTextView.text = "Favorite Play Time: ${user.favoritePlayTime}"
-        profileFavoriteCourtPositionTextView.text = "Favorite Court Position: ${user.favoriteCourtPosition}"
+        profileBestHandTextView.text = user.bestHand
+        profileFavoritePlayTimeTextView.text = user.favoritePlayTime
+        profileFavoriteCourtPositionTextView.text = user.favoriteCourtPosition
 
         if (!user.profileImageUrl.isNullOrEmpty()) {
             Glide.with(this@ProfileFragment)
