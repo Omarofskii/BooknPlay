@@ -1,8 +1,10 @@
 package com.example.project
 
+import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,11 +30,36 @@ class CourtsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCourtsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        recyclerView = binding.recyclerView // If using ViewBinding, replace findViewById with binding
+        recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        setupRecyclerView()
         fetchCourts()
         loadUserProfile()
+    }
+
+    private fun setupRecyclerView() {
+        recyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Assuming you want to remove extra space and set it to 0
+        val itemDecoration = CustomItemDecoration(2)
+        recyclerView.addItemDecoration(itemDecoration)
+
+        courtAdapter = CourtAdapter(courts) { court, selectedTime ->
+            bookCourt(court, selectedTime)
+        }
+        recyclerView.adapter = courtAdapter
+    }
+
+    class CustomItemDecoration(private val spaceHeight: Int) : RecyclerView.ItemDecoration() {
+        override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+            with(outRect) {
+                left =  spaceHeight
+                right = spaceHeight
+                bottom = spaceHeight
+            }
+        }
     }
 
     private fun fetchCourts() {
