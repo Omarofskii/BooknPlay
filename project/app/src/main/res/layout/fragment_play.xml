@@ -4,88 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/play_background"
     tools:context=".PlayFragment">
 
-    <LinearLayout
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="32dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:clipToPadding="false">
+
+<!-- Card for Play a Match -->
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/playMatch"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    app:cardCornerRadius="16dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:layout_marginBottom="16dp"
+    app:cardElevation="6dp"
+    app:strokeColor="@color/card_stroke"
+    app:strokeWidth="1dp">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="150dp"
-        android:layout_margin="5dp">
+        android:scaleType="centerCrop"
+        android:src="@drawable/_631171849903" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#66000000" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/playMatch"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:cardCornerRadius="20dp"
-            android:clickable="true"
-            android:layout_margin="10dp"
-            app:cardElevation="5dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/play_a_match"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:elevation="4dp" />
+</RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
 
+    <!-- Card for Book a Court -->
+<com.google.android.material.card.MaterialCardView
+android:id="@+id/bookCourt"
+android:layout_width="match_parent"
+android:layout_height="200dp"
+app:cardCornerRadius="16dp"
+android:clickable="true"
+android:focusable="true"
+android:foreground="?attr/selectableItemBackground"
+app:cardElevation="6dp"
+app:strokeColor="@color/card_stroke"
+    app:strokeWidth="1dp">
 
-            >
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+<ImageView
+    android:id="@+id/IMAGE2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="centerCrop"
+    android:src="@drawable/__padel_courts_tablet" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#66000000" />
 
-                <ImageView
-                    android:id="@+id/image1"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:maxHeight="100dp"
-                    android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/_631171849903" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="130dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/play_a_match"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/bookCourt"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:cardCornerRadius="20dp"
-            android:clickable="true"
-
-            android:layout_margin="10dp"
-            app:cardElevation="5dp"
-
-
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/IMAGE2"
-                android:layout_width="match_parent"
-                android:layout_height="127dp"
-                android:layout_weight="1"
-                android:scaleType="centerCrop"
-                android:src="@drawable/__padel_courts_tablet" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="130dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/book_a_court"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:text="@string/book_a_court"
+    android:textSize="22sp"
+    android:textColor="@color/white"
+    android:textStyle="bold"
+android:padding="8dp"
+android:elevation="4dp" />
+</RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
-</FrameLayout>
+    </FrameLayout>
