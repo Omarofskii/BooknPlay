@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class PlayMatchActivity : AppCompatActivity(), MatchInteractionListener {
 
@@ -37,6 +38,14 @@ class PlayMatchActivity : AppCompatActivity(), MatchInteractionListener {
 
         viewModel.fetchMatches()
     }
+
+    override fun onResume() {
+        super.onResume()
+        // Fetch the matches every time the activity resumes
+        viewModel.fetchMatches()
+    }
+
+
 
     override fun onJoinMatchClicked(matchId: String) {
         FirebaseAuth.getInstance().currentUser?.uid?.let { userId ->
